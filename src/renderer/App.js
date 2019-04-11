@@ -1,9 +1,11 @@
+import { hot } from 'react-hot-loader/root'
 import React from 'react'
 
-export default function App() {
+function App() {
   return (
     <div className="App">
       <h1>Hello world!</h1>
     </div>
   )
 }
+export default hot(App)
