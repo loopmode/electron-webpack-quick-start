@@ -1,5 +1,11 @@
+import React from 'react'
+import ReactDOM from 'react-dom'
+
 const element = document.getElementById('app')
 
-element.innerHTML = `
-  <h1>Hello world!</h1>
-`
+function renderApp() {
+  const App = require('./App').default
+  ReactDOM.render(<App />, element)
+}
+
+renderApp()

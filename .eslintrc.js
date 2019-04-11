@@ -1,6 +1,6 @@
 module.exports = {
   /* your base configuration of choice */
-  extends: 'eslint:recommended',
+  extends: ['eslint:recommended', 'plugin:react/recommended'],
 
   parser: 'babel-eslint',
   parserOptions: {
@@ -12,5 +12,10 @@ module.exports = {
   },
   globals: {
     __static: true
+  },
+  settings: {
+    react: {
+      version: 'detect'
+    }
   }
-};
+}
