@@ -1,4 +1,5 @@
 {
   "prettier.semi": false,
-  "prettier.bracketSpacing": true
+  "prettier.bracketSpacing": true,
+  "prettier.eslintIntegration": true
 }
