@@ -13,10 +13,6 @@ function createMainWindow() {
   const window = new BrowserWindow()
 
   if (isDevelopment) {
-    window.webContents.openDevTools()
-  }
-
-  if (isDevelopment) {
     window.loadURL(`http://localhost:${process.env.ELECTRON_WEBPACK_WDS_PORT}`)
   } else {
     window.loadURL(
@@ -32,12 +28,17 @@ function createMainWindow() {
     mainWindow = null
   })
 
-  window.webContents.on('devtools-opened', () => {
-    window.focus()
-    setImmediate(() => {
-      window.focus()
+  if (isDevelopment) {
+    window.webContents.on('did-frame-finish-load', () => {
+      window.webContents.openDevTools()
     })
-  })
+    window.webContents.on('devtools-opened', () => {
+      window.focus()
+      setImmediate(() => {
+        window.focus()
+      })
+    })
+  }
 
   return window
 }
