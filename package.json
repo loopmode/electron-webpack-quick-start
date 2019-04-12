@@ -2,12 +2,6 @@
   "name": "electron-webpack-quick-start-react",
   "version": "0.0.0",
   "license": "MIT",
-  "electronWebpack": {
-    "commonSourceDirectory": "src/common",
-    "renderer": {
-      "webpackConfig": "webpack.renderer.additions.js"
-    }
-  },
   "scripts": {
     "dev": "electron-webpack dev",
     "compile": "electron-webpack",
