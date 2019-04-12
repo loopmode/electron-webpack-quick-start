@@ -3,6 +3,7 @@
 import { app, BrowserWindow } from 'electron'
 import * as path from 'path'
 import { format as formatUrl } from 'url'
+import initDevTools from './initDevTools'
 
 const isDevelopment = process.env.NODE_ENV !== 'production'
 
@@ -14,6 +15,7 @@ function createMainWindow() {
 
   if (isDevelopment) {
     window.loadURL(`http://localhost:${process.env.ELECTRON_WEBPACK_WDS_PORT}`)
+    initDevTools(window)
   } else {
     window.loadURL(
       formatUrl({
@@ -27,18 +29,6 @@ function createMainWindow() {
   window.on('closed', () => {
     mainWindow = null
   })
-
-  if (isDevelopment) {
-    window.webContents.on('did-frame-finish-load', () => {
-      window.webContents.openDevTools()
-    })
-    window.webContents.on('devtools-opened', () => {
-      window.focus()
-      setImmediate(() => {
-        window.focus()
-      })
-    })
-  }
 
   return window
 }

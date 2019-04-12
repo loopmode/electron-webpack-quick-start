@@ -1,0 +1,22 @@
+{
+   "content_scripts": [ {
+      "all_frames": true,
+      "js": [ "content-script.js" ],
+      "matches": [ "http://*/*", "https://*/*", "file://*/*" ],
+      "run_at": "document_start"
+   } ],
+   "description": "Makes Immutable JS objects more readable when they are logged to the console.",
+   "devtools_page": "devtool.html",
+   "icons": {
+      "128": "icon-128.png"
+   },
+   "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAn25IKpjUGkATVNIZLvo2hTyWPTTBUsnekZojlIyH1QAjRMG98FiL/wGD8VjrzHdCFLwnMBYReI4x6Bf2RQymgjROJh0OxEkseVh1HHZ9hv7ze5eGuudGyauFwxcqD2BspR9FUM4PyR0AvwG60Ilex5kIXvoDpMcr2FmsJu/VJc240QuKz8vK9AfcSRgp01bIqi8Yynp9elUdU9Q6UqenDlLgA9gZcpSVGflirw0mmFqGMWqPk0oTxsug4IwkKazG/Iz8uJsEzODGnmIsrXf3PBK9CdXD+rJsT42v1cIu/KSDmMbfCb+TbugJ7H+qva0M9bPIHmW9vbSwjOd/l1UNQwIDAQAB",
+   "manifest_version": 2,
+   "minimum_chrome_version": "48.0",
+   "name": "Immutable.js Object Formatter",
+   "permissions": [ "http://*/*", "http://*/*", "file://*/*" ],
+   "short_name": "Immutable.js Object Formatter",
+   "update_url": "https://clients2.google.com/service/update2/crx",
+   "version": "1.9.2",
+   "web_accessible_resources": [ "bundle.js" ]
+}
