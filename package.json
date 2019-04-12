@@ -3,6 +3,7 @@
   "version": "0.0.0",
   "license": "MIT",
   "electronWebpack": {
+    "commonSourceDirectory": "src/common",
     "renderer": {
       "webpackConfig": "webpack.renderer.additions.js"
     }

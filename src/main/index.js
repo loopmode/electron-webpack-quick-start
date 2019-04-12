@@ -1,11 +1,10 @@
 'use strict'
-
+import { isDevelopment } from 'common/env'
 import { app, BrowserWindow } from 'electron'
 import * as path from 'path'
 import { format as formatUrl } from 'url'
 import initDevTools from './initDevTools'
 
-const isDevelopment = process.env.NODE_ENV !== 'production'
 if (isDevelopment) {
   process.env['ELECTRON_DISABLE_SECURITY_WARNINGS'] = 'true'
 }
