@@ -6,6 +6,9 @@ import { format as formatUrl } from 'url'
 import initDevTools from './initDevTools'
 
 const isDevelopment = process.env.NODE_ENV !== 'production'
+if (isDevelopment) {
+  process.env['ELECTRON_DISABLE_SECURITY_WARNINGS'] = 'true'
+}
 
 // global reference to mainWindow (necessary to prevent window from being garbage collected)
 let mainWindow
