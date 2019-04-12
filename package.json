@@ -1,5 +1,5 @@
 {
-  "name": "electron-webpack-quick-start",
+  "name": "electron-webpack-quick-start-react",
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
@@ -15,6 +15,7 @@
     "source-map-support": "^0.5.10"
   },
   "devDependencies": {
+    "@babel/plugin-proposal-class-properties": "^7.4.0",
     "@babel/preset-react": "^7.0.0",
     "electron": "4.0.1",
     "electron-builder": "20.38.4",
