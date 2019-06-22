@@ -13,7 +13,7 @@ if (isDevelopment) {
 let mainWindow
 
 function createMainWindow() {
-  const window = new BrowserWindow()
+  const window = new BrowserWindow({webPreferences: {nodeIntegration: true}})
 
   let url
 
