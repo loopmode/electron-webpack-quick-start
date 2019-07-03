@@ -10,7 +10,7 @@
   },
   "electronWebpack": {
     "renderer": {
-      "webpackConfig": "webpack.renderer.js"
+      "webpackConfig": "webpack.renderer.additions.js"
     }
   },
   "dependencies": {
