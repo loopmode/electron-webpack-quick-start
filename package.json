@@ -8,13 +8,28 @@
     "dist": "yarn compile && electron-builder",
     "dist:dir": "yarn dist --dir -c.compression=store -c.mac.identity=null"
   },
+  "electronWebpack": {
+    "whiteListedModules": [
+      "bootstrap",
+      "bootstrap-vue",
+      "vue"
+    ]
+  },
   "dependencies": {
-    "source-map-support": "^0.5.12"
+    "bootstrap": "^4.3.1",
+    "bootstrap-vue": "^2.0.0-rc.25",
+    "source-map-support": "^0.5.12",
+    "vue": "^2.6.10"
   },
   "devDependencies": {
     "electron": "5.0.4",
     "electron-builder": "^20.44.4",
-    "electron-webpack": "^2.7.1",
+    "electron-webpack": "2.7.2",
+    "electron-webpack-ts": "^3.2.0",
+    "electron-webpack-vue": "^2.3.0",
+    "eslint": "^6.0.1",
+    "eslint-plugin-html": "^6.0.0",
+    "typescript": "^3.5.2",
     "webpack": "~4.35.0"
   }
 }
