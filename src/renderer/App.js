@@ -1,29 +1,54 @@
 import { hot } from 'react-hot-loader/root'
-import React from 'react'
 
-import { getStatic } from '@/static'
+import requireStatic from '@/requireStatic'
+import React from 'react'
+import './App.css'
+
+const reactLogo = requireStatic('./react.svg')
+const electronLogo = requireStatic('electron.png')
+
+// eslint-disable-next-line react/prop-types
+const Link = React.memo(function Link({ href, children }) {
+  return (
+    <a
+      rel="noopener noreferrer"
+      target="_blank"
+      className="App-link"
+      href={href}
+    >
+      {children}
+    </a>
+  )
+})
 
 function App() {
   return (
     <div className="App">
-      <h1>Hello world!</h1>
-      <section>
-        <h2>Embedded</h2>
-        <p>
-          The next image is embedded via{' '}
-          <code>{`<img src={require('./electron.png')} />`}</code>
-        </p>
-        <img src={require('./electron.png')} />
-      </section>
-      <section>
-        <h2>Static</h2>
-        <p>
-          The next image is embedded via{' '}
-          <code>{`<img src={getStatic('electron.png')} />`}</code>
-        </p>
-        <img src={getStatic('electron.png')} />
-      </section>
+      <header className="App-header">
+        <img
+          src={reactLogo}
+          className="App-logo react-logo"
+          alt="react-logo logo"
+        />
+        <img
+          src={electronLogo}
+          className="App-logo electron-logo"
+          alt="electron logo"
+        />
+      </header>
+      <p>
+        Edit <code>src/renderer/App.js</code> and save to reload.
+      </p>
+      <p>
+        <Link href="https://reactjs.org">Learn React</Link>
+      </p>
+      <p>
+        <Link href="https://webpack.electron.build/">
+          Learn Electron webpack
+        </Link>
+      </p>
     </div>
   )
 }
+
 export default hot(App)

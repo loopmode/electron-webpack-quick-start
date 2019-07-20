@@ -1,23 +1,21 @@
 'use strict'
-import { isDevelopment } from 'common/env'
+import env from 'common/env'
 import { app, BrowserWindow } from 'electron'
 import * as path from 'path'
 import { format as formatUrl } from 'url'
-import initDevTools from './initDevTools'
-
-if (isDevelopment) {
-  process.env['ELECTRON_DISABLE_SECURITY_WARNINGS'] = 'true'
-}
+import initDevTools from './dev/initDevTools'
 
 // global reference to mainWindow (necessary to prevent window from being garbage collected)
 let mainWindow
 
 function createMainWindow() {
-  const window = new BrowserWindow({webPreferences: {nodeIntegration: true}})
+  const window = new BrowserWindow({
+    webPreferences: { nodeIntegration: true }
+  })
 
   let url
 
-  if (isDevelopment) {
+  if (env.isDevelopment) {
     url = `http://localhost:${process.env.ELECTRON_WEBPACK_WDS_PORT}`
     initDevTools(window, true)
   } else {
@@ -28,6 +26,9 @@ function createMainWindow() {
     })
   }
 
+  window.on('error', error => {
+    console.error({ error })
+  })
   window.on('closed', () => {
     mainWindow = null
   })
@@ -56,3 +57,7 @@ app.on('activate', () => {
 app.on('ready', () => {
   mainWindow = createMainWindow()
 })
+
+if (module.hot) {
+  module.hot.accept()
+}

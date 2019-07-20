@@ -1,0 +1,38 @@
+.App {
+  text-align: center;
+  font-size: calc(10px + 2vmin);
+}
+
+.App-logo {
+  object-fit: cover;
+  pointer-events: none;
+  height: 42vmin;
+  width: 42vmin;
+  animation: App-logo-spin infinite 20s linear;
+}
+.electron-logo {
+  width: 32vmin;
+  height: 32vmin;
+  margin: 5vmin;
+  animation-direction: reverse;
+}
+
+.App-header {
+  background-color: #282c34;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+}
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}

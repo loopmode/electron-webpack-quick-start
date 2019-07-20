@@ -1,11 +1,8 @@
+import '@/env'
+
 import React from 'react'
 import ReactDOM from 'react-dom'
+import './index.css'
+import App from './App'
 
-const element = document.getElementById('app')
-
-function renderApp() {
-  const App = require('./App').default
-  ReactDOM.render(<App />, element)
-}
-
-renderApp()
+ReactDOM.render(<App />, document.getElementById('app'))

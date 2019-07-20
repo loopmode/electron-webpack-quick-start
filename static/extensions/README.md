@@ -1,6 +1,6 @@
 # static/extensions
 
-This folder contains chrome extensions that need to be manually installed because there is no package available on npm.
-See https://electronjs.org/docs/tutorial/devtools-extension for how to get the files of an extension.
+This folder contains chrome extensions for convenience.
 
-Once you copied the files of an extension here, make sure to add it to the extensions array in `src/main/initDevTools.js`.
+To add an extension, install it in chrome, then read https://electronjs.org/docs/tutorial/devtools-extension on how to find relevant files.
+Copy the files into this folder, then register the extension extension in `src/main/chrome-extensions.js`.

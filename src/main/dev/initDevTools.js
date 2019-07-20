@@ -1,18 +1,8 @@
 import { BrowserWindow } from 'electron'
-import * as path from 'path'
 
-const customExtensions = [
-  {
-    name: 'Immutable.js Object Formatter',
-    dir: path.join(__static, 'extensions/immutablejs-object-formatter/1.9.2_0')
-  },
-  {
-    name: 'React Developer Tools',
-    dir: path.join(__static, 'extensions/react-developer-tools/3.6.0_0')
-  }
-]
+import chromeExtensions from './chrome-extensions'
 
-export default function initDevTools(window, withExtensions) {
+export default function initDevTools(window, useExtensions) {
   window.webContents.on('devtools-opened', () => {
     window.focus()
     setImmediate(() => window.focus())
@@ -20,12 +10,12 @@ export default function initDevTools(window, withExtensions) {
   window.webContents.on('did-frame-finish-load', () => {
     window.webContents.openDevTools()
   })
-  if (withExtensions) {
-    installExtensions()
+  if (useExtensions) {
+    installExtensions(chromeExtensions)
   }
 }
 
-export function installExtensions(extensions = customExtensions) {
+export function installExtensions(extensions) {
   const installedExtensions = Object.keys(BrowserWindow.getDevToolsExtensions())
   extensions.forEach(({ name, dir }) => {
     if (!installedExtensions.includes(name)) {
