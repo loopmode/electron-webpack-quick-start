@@ -1,6 +1,5 @@
 import path from 'path'
 import * as url from 'url'
-import env from '@/env'
 
 /**
  * Takes a file path and returns either a local filesystem path in production, or a localhost url in development.
@@ -10,7 +9,7 @@ import env from '@/env'
  * @return {string} - filepath that can be required
  */
 export default function requireStatic(resourcePath) {
-  if (env.isProduction) {
+  if (process.env.NODE_ENV === 'production') {
     return path.resolve(__static, resourcePath)
   }
   return url.resolve(window.location.origin, resourcePath)
