@@ -29,6 +29,7 @@ function createMainWindow() {
 
   window.on('closed', () => {
     mainWindow = null
+    expressWindow.close()
   })
 
   window.webContents.on('devtools-opened', () => {
@@ -38,6 +39,37 @@ function createMainWindow() {
     })
   })
 
+  return window
+}
+
+let expressWindow
+
+function createExpressWindow() {
+  // in development, you might want to use `show: true` for logging and debugging
+  const window = new BrowserWindow({webPreferences: {nodeIntegration: true}, show: false})
+  if (isDevelopment) {
+    window.webContents.openDevTools()
+  }
+  if (isDevelopment) {
+    window.loadURL(`http://localhost:${process.env.ELECTRON_WEBPACK_WDS_PORT}/#express`)
+  }
+  else {
+    window.loadURL(formatUrl({
+      pathname: path.join(__dirname, 'index.html'),
+      protocol: 'file',
+      slashes: true,
+      hash: 'express'
+    }))
+  }
+  window.on('closed', () => {
+    expressWindow = null
+  })
+  window.webContents.on('devtools-opened', () => {
+    window.focus()
+    setImmediate(() => {
+      window.focus()
+    })
+  })
   return window
 }
 
@@ -54,9 +86,13 @@ app.on('activate', () => {
   if (mainWindow === null) {
     mainWindow = createMainWindow()
   }
+  if (expressWindow === null) {
+    expressWindow = createExpressWindow();
+  }
 })
 
 // create main BrowserWindow when electron is ready
 app.on('ready', () => {
   mainWindow = createMainWindow()
+  expressWindow = createExpressWindow();
 })

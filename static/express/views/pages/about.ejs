@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include('../partials/head'); %>
+  </head>
+  <body class="container">
+    <header><%- include('../partials/header'); %></header>
+
+    <main>
+      <div class="row">
+        <div class="col-sm-8">
+          <div class="jumbotron">
+            <h3><%= title %></h3>
+            <p>
+              This example was whipped up for
+              <a
+                href="https://github.com/electron-userland/electron-webpack/issues/165"
+                target="_blank"
+                >this issue</a
+              >
+            </p>
+            <p>
+              The EJS views are based on
+              <a
+                target="_blank"
+                class="navbar-brand"
+                href="https://www.digitalocean.com/community/tutorials/how-to-use-ejs-to-template-your-node-application"
+                >this tutorial</a
+              >
+            </p>
+          </div>
+        </div>
+
+        <div class="col-sm-4">
+          <div class="well">
+            <h3>Look I'm A Sidebar!</h3>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <footer><%- include('../partials/footer'); %></footer>
+  </body>
+</html>
