@@ -6,10 +6,9 @@
   let app = express();
 
   app.use(cors());
-  const viewsPath = path.join(__static, "./express/views");
-  console.log({ viewsPath });
+  
   app.set("view engine", "ejs");
-  app.set("views", viewsPath);
+  app.set("views", path.join(__static, "./express/views"));
 
   app.get("/", function (req, res) {
     res.render("pages/index", {
